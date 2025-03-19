@@ -25,4 +25,4 @@ Adaptive Design – Ensures usability across different screen sizes
 
 This project is deployed on GitHub Pages:
 
-https://github.com/Bianca2593/se_project_todo-app.git
+https://bianca2593.github.io/se_project_todo-app/ 
