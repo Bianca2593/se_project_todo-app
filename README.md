@@ -1,17 +1,28 @@
 # Simple Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+A lightweight and user-friendly task management web application that allows users to add, track, and delete tasks easily. The app provides a simple and intuitive interface, making it easy to stay organized and productive.
 
 ## Functionality
 
-Give a more detailed explanation of the project and its functionality.
+The Simple ToDo App enables users to:
+
+✅ Add new tasks with a title and optional due date.
+📆 Mark tasks as completed with a checkbox.
+❌ Delete tasks once they are no longer needed.
+🔢 View a task counter showing completed and total tasks.
+🎨 Experience an adaptive design for smooth usability across different devices.
 
 ## Technology
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
+This project is built using:
+
+HTML – Structure and layout.
+CSS – Styling and responsive design.
+JavaScript (Modules) – Dynamic functionality and interactivity.
+Adaptive Design – Ensures usability across different screen sizes
 
 ## Deployment
 
 This project is deployed on GitHub Pages:
 
-- ADD LINK HERE
+https://github.com/Bianca2593/se_project_todo-app.git

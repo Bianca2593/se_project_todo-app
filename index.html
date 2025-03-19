@@ -3,6 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="TODO App: a simple todo web
+  application." />
+    <meta name="author" content="Bianca N" />
+    <meta
+      name="keywords"
+      content="HTML, CSS, README.md, JavaScript, Modules, and Adaptive Design."
+    />
     <title>Simple ToDo App</title>
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
@@ -55,7 +64,8 @@
                       min="2023-01-01"
                       max="3000-12-31"
                     />
-                    <span class="popup__error" id="todo-date-error"></span>
+                    <span class="popup__error" 
+                    id="todo-date-error"></span>
                   </label>
                 </fieldset>
                 <button class="button popup__button" type="submit">
@@ -74,22 +84,24 @@
               <template id="todo-template">
                 <li class="todo">
                   <label class="todo__label" for="">
-                    <input class="todo__completed" id="" type="checkbox" />
+                    <input class="todo__completed" 
+                    id="" 
+                    type="checkbox" />
                     <span class="todo__name"></span>
                     <span class="todo__date"></span>
                   </label>
                   <ul class="todo__buttons">
-                    <!-- List is used to support future additional buttons -->
+                
                     <li>
-                      <button class="todo__delete-btn" type="button"></button>
+                      <button class="todo__delete-btn"
+                       type="button"></button>
                     </li>
                   </ul>
                 </li>
               </template>
             </ul>
           </section>
-          <script src="./pages/index.js" defer></script>
-          <script src="./scripts/validate.js" defer></script>
+          <script src="./pages/index.js" type="module"></script>
         </main>
       </div>
     </div>
