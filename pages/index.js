@@ -5,53 +5,57 @@ import FormValidator from "../components/FormValidator.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopup = document.querySelector("#add-todo-popup");
-const addTodoForm = addTodoPopup.querySelector(".popup__form");
+const addTodoForm = document.forms["add-todo-form"]; 
 const addTodoCloseBtn = addTodoPopup.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
+
 
 const openModal = (modal) => {
   modal.classList.add("popup_visible");
 };
 
+
 const closeModal = (modal) => {
   modal.classList.remove("popup_visible");
 };
 
-const generateTodo = (data) => {
-  const todo = new Todo(data, "#todo-template");
-  const todoElement = todo.getView();
-  return todoElement;
+
+const renderTodo = (item) => {
+  const todo = new Todo(item, "#todo-template");
+  todosList.append(todo.getView());
 };
 
-addTodoButton.addEventListener("click", () => {
-  openModal(addTodoPopup);
-  newTodoValidator.resetValidation();
-});
 
-addTodoCloseBtn.addEventListener("click", () => {
-  closeModal(addTodoPopup);
-});
+addTodoButton.addEventListener("click", () => openModal(addTodoPopup));
+
+
+addTodoCloseBtn.addEventListener("click", () => closeModal(addTodoPopup));
+
 
 addTodoForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  const name = evt.target.name.value;
-  const dateInput = evt.target.date.value;
 
+  const name = evt.target.name.value.trim();
+  const dateInput = evt.target.date.value.trim();
+
+  if (!name || !dateInput) return;
+  
   const date = new Date(dateInput);
   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
 
   const id = uuidv4();
   const values = { name, date, id };
-  const todo = generateTodo(values);
-  todosList.append(todo);
-  newTodoValidator.resetValidation();
+
+  renderTodo(values); 
+
+  addTodoForm.reset(); 
+  newTodoValidator.resetValidation(); 
   closeModal(addTodoPopup);
 });
 
-initialTodos.forEach((item) => {
-  const todo = generateTodo(item);
-  todosList.append(todo);
-});
+
+initialTodos.forEach(renderTodo);
+
 
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
 newTodoValidator.enableValidation();

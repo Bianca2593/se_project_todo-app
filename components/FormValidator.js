@@ -11,7 +11,7 @@ class FormValidator {
 
   _showInputError(inputElement, errorMessage) {
     const errorElement = this._formEl.querySelector(`#${inputElement.id}-error`);
-    if (!errorElement) return; // Ensure error element exists
+    if (!errorElement) return;
 
     inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = errorMessage;
@@ -53,9 +53,8 @@ class FormValidator {
     this._inputList = Array.from(
       this._formEl.querySelectorAll(this._inputSelector)
     );
-    this._buttonElement = this._formEl.querySelector(
-      this._submitButtonSelector
-    );
+
+    this._buttonElement = this._formEl.querySelector(this._submitButtonSelector);
 
     this._toggleButtonState();
 
@@ -74,15 +73,13 @@ class FormValidator {
     this._setEventListeners();
   }
 
-  // ✅ Updated resetValidation method (correct behavior)
   resetValidation() {
     this._inputList.forEach((inputElement) => {
-      this._hideInputError(inputElement); // Hide validation errors
+      this._hideInputError(inputElement);
     });
 
-    // Disable the submit button
-    this._buttonElement.classList.add(this._inactiveButtonClass);
-    this._buttonElement.disabled = true;
+    this._formEl.reset(); 
+    this._toggleButtonState();
   }
 }
 
