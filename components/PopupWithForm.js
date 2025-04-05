@@ -1,23 +1,38 @@
 import Popup from "./Popup.js";
 
-export default class PopupWithForm extends Popup {
-    constructor({popupSelector, handlerFormSubmit}) {
-        super({popupSelector});
-        this._handlerFormSubmit = handlerFormSubmit;
-        this._form = this._popup.querySelector("#add-todo-form");
-    }
+class PopupWithForm extends Popup {
+  constructor(popupSelector, handleFormSubmit) {
+    super(popupSelector);
+    this._handleFormSubmit = handleFormSubmit;
+    this._form = this._popup.querySelector(".popup__form");
+    this._inputList = this._form.querySelectorAll(".popup__input");
+    console.log("PopupWithForm initialized - Input list:", this._inputList); // Debug
+  }
 
-    _getInputValues(evt) {
-        const name = evt.target.name.value;
-        const dateInput = evt.target.date.value;
-        return ({name: name, dateInput: dateInput});
-    }
+  _getInputValues() {
+    const values = {};
+    this._inputList.forEach((input) => {
+      console.log(`Input name: ${input.name}, value: ${input.value}`); // Debug
+      values[input.name] = input.value;
+    });
+    return values;
+  }
 
-    setEventListeners() {
-        super.setEventListeners();
-        this._form.addEventListener("submit", (evt) => {
-            evt.preventDefault();
-            this._handlerFormSubmit(this._getInputValues(evt));
-        });
-    }
+  setEventListeners() {
+    super.setEventListeners();
+    this._form.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      const formData = this._getInputValues();
+      console.log("Submitting form data in PopupWithForm:", formData); // Debug
+      this._handleFormSubmit(formData);
+      this.close(); // Close the popup after submission
+    });
+  }
+
+  close() {
+    super.close();
+    // Removed this._form.reset() to preserve input values on unexpected close
+  }
 }
+
+export default PopupWithForm;
